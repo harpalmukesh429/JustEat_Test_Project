@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200624 08:55:40.724" rpa="false">
+<suite id="s1" name="JustEat Test Project" source="C:\JustEat_Test_Project">
+<suite id="s1-s1" name="TestScripts" source="C:\JustEat_Test_Project\TestScripts">
+<suite id="s1-s1-s1" name="Search TestScripts" source="C:\JustEat_Test_Project\TestScripts\Search_TestScripts.robot">
+<kw name="Open Browser And Set For Testing" library="Common_App_Functions" type="setup">
+<arguments>
+<arg>${gv_URL}</arg>
+<arg>${gv_Browser_Name}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${gv_URL}</arg>
+<arg>${gv_Browser_Name}</arg>
+</arguments>
+<msg timestamp="20200624 08:55:40.955" level="INFO">Opening browser 'chrome' to base url 'http://www.just-eat.co.uk/'.</msg>
+<status status="PASS" starttime="20200624 08:55:40.954" endtime="20200624 08:55:46.806"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200624 08:55:46.807" endtime="20200624 08:55:49.145"></status>
+</kw>
+<kw name="Delete All Cookies" library="Selenium2Library">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" starttime="20200624 08:55:49.146" endtime="20200624 08:55:54.359"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:40.954" endtime="20200624 08:55:54.360"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Scenario: Search for restaurants in an area">
+<kw name="Given I want food in &quot;AR51 1AA&quot;" library="StepDefinition_Home_Page">
+<kw name="Enter Postal Code In Dish Or Restaurant Search Box" library="PageObjects_Home_Page">
+<arguments>
+<arg>${lv_Search_Text}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>//input[@data-test-id='address-box-input']</arg>
+<arg>20s</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:55:54.371" endtime="20200624 08:55:54.404"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@data-test-id='address-box-input']</arg>
+<arg>${lv_SearchText}</arg>
+</arguments>
+<msg timestamp="20200624 08:55:54.405" level="INFO">Typing text 'AR51 1AA' into text field '//input[@data-test-id='address-box-input']'.</msg>
+<status status="PASS" starttime="20200624 08:55:54.405" endtime="20200624 08:55:54.530"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:54.368" endtime="20200624 08:55:54.530"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:54.365" endtime="20200624 08:55:54.530"></status>
+</kw>
+<kw name="When I search for restaurants" library="StepDefinition_Home_Page">
+<kw name="Click Search Button" library="PageObjects_Home_Page">
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>//button[@data-test-id='find-restaurants-button']</arg>
+<arg>20s</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:55:54.532" endtime="20200624 08:55:54.544"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@data-test-id='find-restaurants-button']</arg>
+</arguments>
+<msg timestamp="20200624 08:55:54.545" level="INFO">Clicking element '//button[@data-test-id='find-restaurants-button']'.</msg>
+<status status="PASS" starttime="20200624 08:55:54.545" endtime="20200624 08:56:00.263"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:54.531" endtime="20200624 08:56:00.263"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:54.531" endtime="20200624 08:56:00.263"></status>
+</kw>
+<kw name="Then I should see some restaurants in &quot;AR51 1AA&quot;" library="StepDefinition_Home_Page">
+<kw name="Get Filter Value From Search Results Page" library="PageObjects_Home_Page">
+<assign>
+<var>${lv_Filter_Value}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>//div[contains(@class,'c-searchFilterSection')]//h1</arg>
+</arguments>
+<assign>
+<var>${lv_locator}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.265" level="INFO">${lv_locator} = //div[contains(@class,'c-searchFilterSection')]//h1</msg>
+<status status="PASS" starttime="20200624 08:56:00.265" endtime="20200624 08:56:00.265"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${lv_locator}</arg>
+<arg>20s</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.265" endtime="20200624 08:56:00.326"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${lv_locator}</arg>
+</arguments>
+<assign>
+<var>${lv_Filter_Value}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.345" level="INFO">${lv_Filter_Value} = AR51 1AA, Area51</msg>
+<status status="PASS" starttime="20200624 08:56:00.326" endtime="20200624 08:56:00.345"></status>
+</kw>
+<msg timestamp="20200624 08:56:00.345" level="INFO">${lv_Filter_Value} = AR51 1AA, Area51</msg>
+<status status="PASS" starttime="20200624 08:56:00.264" endtime="20200624 08:56:00.345"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Should Contain</arg>
+<arg>${lv_Filter_Value}</arg>
+<arg>${lv_Search_Text}</arg>
+</arguments>
+<assign>
+<var>${lv_Filter_Status}</var>
+</assign>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${lv_Filter_Value}</arg>
+<arg>${lv_Search_Text}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.346" endtime="20200624 08:56:00.346"></status>
+</kw>
+<msg timestamp="20200624 08:56:00.346" level="INFO">${lv_Filter_Status} = True</msg>
+<status status="PASS" starttime="20200624 08:56:00.346" endtime="20200624 08:56:00.347"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${lv_Filter_Status}</arg>
+<arg>Log</arg>
+<arg>Resturant Searched For the Criteria As Given '${lv_Filter_Value}'</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Resturant Are Not Searched For the Criteria As Given '${lv_Filter_Value}'</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Resturant Searched For the Criteria As Given '${lv_Filter_Value}'</arg>
+</arguments>
+<msg timestamp="20200624 08:56:00.347" level="INFO">Resturant Searched For the Criteria As Given 'AR51 1AA, Area51'</msg>
+<status status="PASS" starttime="20200624 08:56:00.347" endtime="20200624 08:56:00.348"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.347" endtime="20200624 08:56:00.348"></status>
+</kw>
+<kw name="Get List Of All Resturants Displayed On Default Search Results Page" library="PageObjects_Home_Page">
+<assign>
+<var>${list_Resturants_Displayed}</var>
+</assign>
+<kw name="Get WebElements" library="Selenium2Library">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>//h3[@data-test-id='restaurant_name']</arg>
+</arguments>
+<assign>
+<var>${list_Resturants_locator}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.360" level="INFO">${list_Resturants_locator} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="581bbf7a18f45d23c402358a8bbd0fe8", element="393d434a-2247-4ef6-8744-1f72cecbc853")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20200624 08:56:00.348" endtime="20200624 08:56:00.360"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${list_Resturants_Displayed}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.361" level="INFO">${list_Resturants_Displayed} = []</msg>
+<status status="PASS" starttime="20200624 08:56:00.360" endtime="20200624 08:56:00.361"></status>
+</kw>
+<kw name="${List_Items} IN [ @{list_Resturants_locator} ]" type="for">
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;393d434a-2247-4ef6-8744-1f72cecbc853&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.373" level="INFO">${lv_Resturants_Name} = Demo - Subway Patel Premium Halal - Cookies</msg>
+<status status="PASS" starttime="20200624 08:56:00.362" endtime="20200624 08:56:00.373"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.373" endtime="20200624 08:56:00.374"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.361" endtime="20200624 08:56:00.374"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;e1c00578-4618-4cf6-b0a4-72a9e3aa538c&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.386" level="INFO">${lv_Resturants_Name} = Nicola Fraser Sales Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.374" endtime="20200624 08:56:00.386"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.386" endtime="20200624 08:56:00.387"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.374" endtime="20200624 08:56:00.387"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;63e38e4f-e01b-46a6-aed2-dce48de17f73&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.403" level="INFO">${lv_Resturants_Name} = Supply Chain Testing 7</msg>
+<status status="PASS" starttime="20200624 08:56:00.387" endtime="20200624 08:56:00.403"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.404" endtime="20200624 08:56:00.404"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.387" endtime="20200624 08:56:00.404"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;a538d2ba-709e-4964-844a-1a9cdd3b7497&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.422" level="INFO">${lv_Resturants_Name} = Demo - Lindsay Karali</msg>
+<status status="PASS" starttime="20200624 08:56:00.405" endtime="20200624 08:56:00.422"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.423" endtime="20200624 08:56:00.423"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.404" endtime="20200624 08:56:00.423"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;8d86ab2f-e7c7-4282-a508-3cb945d9e727&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.434" level="INFO">${lv_Resturants_Name} = COR DEMO</msg>
+<status status="PASS" starttime="20200624 08:56:00.424" endtime="20200624 08:56:00.435"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.435" endtime="20200624 08:56:00.435"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.423" endtime="20200624 08:56:00.435"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;2880b87c-77e8-4204-a52a-72e274c5f73d&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.447" level="INFO">${lv_Resturants_Name} = Gordon Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.436" endtime="20200624 08:56:00.447"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.447" endtime="20200624 08:56:00.448"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.436" endtime="20200624 08:56:00.448"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;95346c6a-8845-4aec-a6dc-7a0d297f834b&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.459" level="INFO">${lv_Resturants_Name} = Newbies DEMO Induction</msg>
+<status status="PASS" starttime="20200624 08:56:00.448" endtime="20200624 08:56:00.459"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.460" endtime="20200624 08:56:00.460"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.448" endtime="20200624 08:56:00.460"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;52c01283-588b-404a-a0e1-84e23eccc3e2&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.472" level="INFO">${lv_Resturants_Name} = Gordon's Grill (Demo)</msg>
+<status status="PASS" starttime="20200624 08:56:00.461" endtime="20200624 08:56:00.472"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.473" endtime="20200624 08:56:00.473"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.460" endtime="20200624 08:56:00.473"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;efdb4acd-a000-42f0-ba7e-bea6858d79c6&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.485" level="INFO">${lv_Resturants_Name} = Alison Howe - Sales Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.474" endtime="20200624 08:56:00.485"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.485" endtime="20200624 08:56:00.486"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.473" endtime="20200624 08:56:00.486"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;40b87ce6-c2a1-437d-8a63-357ffffc3817&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.498" level="INFO">${lv_Resturants_Name} = To A Tea Blackfriars Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.486" endtime="20200624 08:56:00.498"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.498" endtime="20200624 08:56:00.498"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.486" endtime="20200624 08:56:00.498"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;1bec3cd4-40c8-4463-bfa2-90a301973296&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.511" level="INFO">${lv_Resturants_Name} = Demo - Tops Pizza Group C</msg>
+<status status="PASS" starttime="20200624 08:56:00.499" endtime="20200624 08:56:00.511"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.511" endtime="20200624 08:56:00.512"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.499" endtime="20200624 08:56:00.512"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;8252c605-1a48-41e6-afe6-0fae8731648e&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.524" level="INFO">${lv_Resturants_Name} = Natalie Afaty Sales Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.512" endtime="20200624 08:56:00.524"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.524" endtime="20200624 08:56:00.524"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.512" endtime="20200624 08:56:00.525"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;e16cd08c-fba5-4bd3-82bb-8c93b1a60fb2&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.537" level="INFO">${lv_Resturants_Name} = Pizza Hut - Shell Menu</msg>
+<status status="PASS" starttime="20200624 08:56:00.525" endtime="20200624 08:56:00.537"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.538" endtime="20200624 08:56:00.538"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.525" endtime="20200624 08:56:00.538"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;2bea5ecf-3ff1-494c-a4b5-7dcacf22d5ab&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.549" level="INFO">${lv_Resturants_Name} = Demo - Toby Carvery Price Band 2 (Not In Use)</msg>
+<status status="PASS" starttime="20200624 08:56:00.538" endtime="20200624 08:56:00.549"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.550" endtime="20200624 08:56:00.550"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.538" endtime="20200624 08:56:00.550"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;16599ccc-f40a-4434-9961-97278171e3b7&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.563" level="INFO">${lv_Resturants_Name} = JAck Demo Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.551" endtime="20200624 08:56:00.563"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.563" endtime="20200624 08:56:00.563"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.551" endtime="20200624 08:56:00.563"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;52fb0af0-2668-4b50-9b34-e26a7cc2bc3c&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.575" level="INFO">${lv_Resturants_Name} = Supply Chain Testing 8</msg>
+<status status="PASS" starttime="20200624 08:56:00.564" endtime="20200624 08:56:00.575"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.576" endtime="20200624 08:56:00.576"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.564" endtime="20200624 08:56:00.576"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;08cf6dd0-394b-47d7-9d5e-332673dfe85d&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.588" level="INFO">${lv_Resturants_Name} = Regency Club Test Location</msg>
+<status status="PASS" starttime="20200624 08:56:00.577" endtime="20200624 08:56:00.588"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.588" endtime="20200624 08:56:00.589"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.576" endtime="20200624 08:56:00.589"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;2fea1937-51af-4059-9084-2e93482552e6&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.601" level="INFO">${lv_Resturants_Name} = Delivery/Collection Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.589" endtime="20200624 08:56:00.601"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.602" endtime="20200624 08:56:00.602"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.589" endtime="20200624 08:56:00.602"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;2e817baa-c158-4771-8c97-0c1514890917&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.614" level="INFO">${lv_Resturants_Name} = Corey Demo</msg>
+<status status="PASS" starttime="20200624 08:56:00.603" endtime="20200624 08:56:00.614"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.615" endtime="20200624 08:56:00.615"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.602" endtime="20200624 08:56:00.615"></status>
+</kw>
+<kw name="${List_Items} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;581bbf7a18f45d23c402358a8bbd0fe8&quot;, element=&quot;c2f55158-5eef-4583-bbcc-133da8362aad&quot;)&gt;" type="foritem">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${List_Items}</arg>
+</arguments>
+<assign>
+<var>${lv_Resturants_Name}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.627" level="INFO">${lv_Resturants_Name} = Demo - Itsu - Channel 1</msg>
+<status status="PASS" starttime="20200624 08:56:00.616" endtime="20200624 08:56:00.627"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<status status="PASS" starttime="20200624 08:56:00.627" endtime="20200624 08:56:00.627"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.615" endtime="20200624 08:56:00.628"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.361" endtime="20200624 08:56:00.628"></status>
+</kw>
+<msg timestamp="20200624 08:56:00.628" level="INFO">${list_Resturants_Displayed} = {list_Resturants_Displayed}</msg>
+<status status="PASS" starttime="20200624 08:56:00.348" endtime="20200624 08:56:00.628"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_Resturants_Displayed}</arg>
+</arguments>
+<assign>
+<var>${lv_Number_Of_Resturants_Displayed}</var>
+</assign>
+<msg timestamp="20200624 08:56:00.629" level="INFO">Length is 27</msg>
+<msg timestamp="20200624 08:56:00.629" level="INFO">${lv_Number_Of_Resturants_Displayed} = 27</msg>
+<status status="PASS" starttime="20200624 08:56:00.628" endtime="20200624 08:56:00.629"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${lv_Number_Of_Resturants_Displayed}&gt;0</arg>
+<arg>Log</arg>
+<arg>Resturants Displayed On Default Search Results Page are:${list_Resturants_Displayed}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>No resturants are displayed for Search Criteria</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Resturants Displayed On Default Search Results Page are:${list_Resturants_Displayed}</arg>
+</arguments>
+<msg timestamp="20200624 08:56:00.630" level="INFO">Resturants Displayed On Default Search Results Page are:{list_Resturants_Displayed}</msg>
+<status status="PASS" starttime="20200624 08:56:00.630" endtime="20200624 08:56:00.630"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.629" endtime="20200624 08:56:00.630"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:56:00.264" endtime="20200624 08:56:00.631"></status>
+</kw>
+<tags>
+<tag>SearchModule</tag>
+<tag>Smoke</tag>
+</tags>
+<status status="PASS" starttime="20200624 08:55:54.361" endtime="20200624 08:56:00.631" critical="yes"></status>
+</test>
+<kw name="Close Browser" library="Selenium2Library" type="teardown">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200624 08:56:00.632" endtime="20200624 08:56:02.735"></status>
+</kw>
+<status status="PASS" starttime="20200624 08:55:40.778" endtime="20200624 08:56:02.737"></status>
+</suite>
+<status status="PASS" starttime="20200624 08:55:40.775" endtime="20200624 08:56:02.747"></status>
+</suite>
+<status status="PASS" starttime="20200624 08:55:40.754" endtime="20200624 08:56:02.754"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">SearchModule</stat>
+<stat pass="1" fail="0">Smoke</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="JustEat Test Project">JustEat Test Project</stat>
+<stat pass="1" fail="0" id="s1-s1" name="TestScripts">JustEat Test Project.TestScripts</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="Search TestScripts">JustEat Test Project.TestScripts.Search TestScripts</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
